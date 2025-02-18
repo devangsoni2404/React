@@ -19,8 +19,7 @@ function App() {
   let [todoitems, setTodoItems] = useState(initialitems);
 
   const handleNewItems = (todoName, todoDate) => {
-    const newTodoItems = [...todoitems, { name: todoName, duedate: todoDate }];
-    setTodoItems(newTodoItems);
+    setTodoItems((currvalue) => [...currvalue,{ name: todoName, duedate: todoDate }])
   }
 
   const handleDeleteItems = (todoItemName) => {
