@@ -1,12 +1,17 @@
 import { useRef } from 'react';
 import Styles from './AddTodo.module.css';
+import { TodoItemContext } from '../Store/todoitem-context-api'
+import { useContext } from 'react'
 
-const AddTodo = ({ onNewItem }) => {
+const AddTodo = () => {
+
+    const {addNewItems} = useContext(TodoItemContext);
+
     const todoNameElement = useRef(null);
     const todoDateElement = useRef(null);
 
     const handleOnAddButton = (event) => {
-        event.preventDefault();  // Prevent page reload
+        event.preventDefault(); 
 
         const todoName = todoNameElement.current.value;
         const dueDate = todoDateElement.current.value;
@@ -16,7 +21,7 @@ const AddTodo = ({ onNewItem }) => {
             return;
         }
 
-        onNewItem(todoName, dueDate);
+        addNewItems(todoName, dueDate);
 
         // Clear inputs after adding
         todoNameElement.current.value = "";

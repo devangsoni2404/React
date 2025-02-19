@@ -1,4 +1,10 @@
-const TodoItem = ({todoname, tododate , onDeleteItem}) => {
+import { TodoItemContext } from '../Store/todoitem-context-api'
+import { useContext } from 'react'
+
+const TodoItem = ({todoname, tododate}) => {
+ 
+        const {deleteItems} = useContext(TodoItemContext);
+
     return <div className="container kg-row">
         <div className="row">
             <div className="col-4">
@@ -7,7 +13,7 @@ const TodoItem = ({todoname, tododate , onDeleteItem}) => {
             <div className="col-4">
                 {tododate}
             </div>
-            <div className="col-2">  <button type="button" className="btn btn-danger kg-button" onClick={() => onDeleteItem(todoname)}>DELETE</button>
+            <div className="col-2">  <button type="button" className="btn btn-danger kg-button" onClick={() => deleteItems(todoname)}>DELETE</button>
             </div>
         </div>
     </div>
